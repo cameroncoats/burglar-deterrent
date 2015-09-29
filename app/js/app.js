@@ -29,6 +29,7 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
       $scope.buttons = [];
     $scope.isHome = function () {
       if($scope.button!='home'){
+        $http.put("apiv1/status/1/home");
       $scope.button = 'home';
       toasty.success({
         title: 'Welcome Back',
@@ -47,6 +48,7 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
 
     $scope.isAway = function () {
       if($scope.button!='away'){
+      $http.put("apiv1/status/1/away");
       $scope.button = 'away';
       toasty.success({
         title: "You're Out",
