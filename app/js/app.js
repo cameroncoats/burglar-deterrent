@@ -1,6 +1,6 @@
 // define the app
 // =============================================================================
-var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize'])
+var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize','angular-toasty'])
 
 // routes
 // =============================================================================
@@ -39,7 +39,8 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
     html: false,
     shake: false,
     theme: "material"
-});
+});}
+
 $scope.isAway = function(){
   $scope.button='away';
   toasty.success({
@@ -52,7 +53,7 @@ sound: true,
 html: false,
 shake: false,
 theme: "material"
-});
+});}
     }
     /////////////////// Alerts ///////////////////////
     //
