@@ -13,7 +13,7 @@ public function setStatus($id,$status){
   $sql = "UPDATE `tblStatus` SET `status`=:status WHERE `id`= :id";
   $sth = $this->_db->prepare($sql);
   $sth -> bindParam(":status",$status,PDO::PARAM_STR);
-  $sth -> bindParam(":id",$is,PDO::PARAM_INT);
+  $sth -> bindParam(":id",$id,PDO::PARAM_INT);
   $sth -> execute();
   return true;
 }
