@@ -28,6 +28,7 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
     //
       $scope.buttons = [];
     $scope.isHome = function () {
+      if($scope.button!='home'){
       $scope.button = 'home';
       toasty.success({
         title: 'Welcome Back',
@@ -41,9 +42,11 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
         limit: 1,
         theme: "material"
       });
-    };
+    }
+   };
 
     $scope.isAway = function () {
+      if($scope.button!='away'){
       $scope.button = 'away';
       toasty.success({
         title: "You're Out",
@@ -57,7 +60,8 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
         limit: 1,
         theme: "material"
       });
-    };
+    }
+  };
 
     /////////////////// Alerts ///////////////////////
     //
