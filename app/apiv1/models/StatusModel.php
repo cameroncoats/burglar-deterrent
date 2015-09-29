@@ -17,7 +17,7 @@ public function setStatus($id,$status){
   return true;
 }
 public function createStatusDB(){
-  $db->exec("CREATE TABLE tblStatus (
+  $this->_db->exec("CREATE TABLE tblStatus (
                       id INTEGER PRIMARY KEY,
                       status TEXT,
                       method TEXT)");
