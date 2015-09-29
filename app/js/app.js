@@ -39,7 +39,7 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
     html: false,
     shake: false,
     theme: "material"
-});}
+});};
 
 $scope.isAway = function(){
   $scope.button='away';
@@ -53,7 +53,7 @@ sound: true,
 html: false,
 shake: false,
 theme: "material"
-});}
+});};
     }
     /////////////////// Alerts ///////////////////////
     //
