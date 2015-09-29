@@ -20,6 +20,11 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
       // catchall state
   $urlRouterProvider.otherwise('/home');
   })
+  .config(['toastyConfigProvider', function(toastyConfigProvider) {
+    toastyConfigProvider.setConfig({
+        limit:1
+    });
+}])
   // Main controller
   // =============================================================================
   .controller('mainController', function ($scope, $http, $q, $window, $location, $interval, toasty) {
