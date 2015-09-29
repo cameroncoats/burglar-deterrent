@@ -22,7 +22,7 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
   })
   // Main controller
   // =============================================================================
-  .controller('mainController', function ($scope, $http, $q, $window, $location, $interval) {
+  .controller('mainController', function ($scope, $http, $q, $window, $location, $interval, toasty) {
     /////////////////// Buttons ///////////////////////
     //
     //
