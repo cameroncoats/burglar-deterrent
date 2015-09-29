@@ -1,5 +1,5 @@
 <?php
-class FilesModel extends BaseModel
+class StatusModel extends BaseModel
 {
 public function getStatus($id){
  $sql = "SELECT * FROM `tblStatus` WHERE `id` = :id";
