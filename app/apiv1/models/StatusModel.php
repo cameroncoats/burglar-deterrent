@@ -5,8 +5,8 @@ public function getStatus($id){
  $sql = "SELECT * FROM `tblStatus` WHERE `id` = :id";
  $sth = $this->_db->prepare($sql);
  $sth -> bindParam(":id",$id,PDO::PARAM_INT);
- $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
- return $results;
+ $results = $stmt->fetch();
+ return $results['status'];
 }
 public function setStatus($id,$status){
   $sql = "UPDATE `tblStatus` SET `status`=:status WHERE `id`= :id";
