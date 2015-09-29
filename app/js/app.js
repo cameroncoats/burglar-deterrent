@@ -26,7 +26,10 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
     /////////////////// Buttons ///////////////////////
     //
     //
-      $scope.buttons = [];
+      $scope.buttons=[];
+      $http.get("apiv1/status/1").then(function(response) {
+          $scope.buttons = response.data;
+        })
     $scope.isHome = function () {
       if($scope.button!='home'){
         $http.put("apiv1/status/1/home");
