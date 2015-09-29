@@ -38,6 +38,7 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
         sound: true,
         html: false,
         shake: false,
+        limit: 1,
         theme: "material"
       });
     };
@@ -53,6 +54,7 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
         sound: true,
         html: false,
         shake: false,
+        limit: 1,
         theme: "material"
       });
     };
