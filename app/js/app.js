@@ -23,6 +23,11 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
 // Main controller
 // =============================================================================
   .controller('mainController', function($scope, $http, $q, $window, $location, $interval) {
+    /////////////////// Buttons ///////////////////////
+    //
+    //
+    $scope.buttons = [];
+
     /////////////////// Alerts ///////////////////////
     //
     // object to hold alerts
