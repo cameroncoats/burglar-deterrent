@@ -36,7 +36,6 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
       $scope.button = 'home';
       toasty.success({
         title: 'Welcome Back',
-        msg: "We'll stop flashing lights n shit now",
         showClose: false,
         clickToClose: true,
         timeout: 2500,
