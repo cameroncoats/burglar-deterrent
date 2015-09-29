@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-xs-12 col-lg-8 col-lg-offset-2">
-    <div class="btn btn-block btn-default" ng-class="{'btn-default':button=='away','btn-success':button=='home'}" ng-click="isHome()"><i class="fa fa-5x fa-home"></i><h3>I'm home</h3></div>
+    <div class="btn btn-block btn-default" ng-class="{'btn-default':button=='away','btn-success':button=='home'}" ng-disabled="button=='home'" ng-click="isHome()"><i class="fa fa-5x fa-home"></i><h3>{{button=='away' ? "I'm Home" : "You're Home"}}</h3></div>
   </div>
 </div>
 <br>
 <div class="row">
   <div class="col-xs-12 col-lg-8 col-lg-offset-2">
-    <div class="btn btn-block btn-default" ng-class="{'btn-default':button=='home','btn-success':button=='away'}" ng-click="isAway()"><i class="fa fa-5x fa-sign-out"></i><h3>I'm away</h3></div>
+    <div class="btn btn-block btn-default" ng-class="{'btn-default':button=='home','btn-success':button=='away'}" ng-disabled="button=='away'" ng-click="isAway()"><i class="fa fa-5x fa-sign-out"></i><h3>{{button=='home' ? "I'm Away" : "You're Away"}}</h3></div>
   </div>
 </div>
