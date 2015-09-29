@@ -27,7 +27,33 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
     //
     //
     $scope.buttons = [];
-
+    $scope.isHome = function(){
+      $scope.button='home';
+      toasty.success({
+    title: "Welcome Back",
+    msg: "We'll stop flashing lights n shit now",
+    showClose: false,
+    clickToClose: true,
+    timeout: 1000,
+    sound: true,
+    html: false,
+    shake: false,
+    theme: "material"
+});
+$scope.isAway = function(){
+  $scope.button='away';
+  toasty.success({
+title: "You're Out",
+msg: "We'll keep your home safe",
+showClose: false,
+clickToClose: true,
+timeout: 1000,
+sound: true,
+html: false,
+shake: false,
+theme: "material"
+});
+    }
     /////////////////// Alerts ///////////////////////
     //
     // object to hold alerts
