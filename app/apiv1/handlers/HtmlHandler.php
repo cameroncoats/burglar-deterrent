@@ -64,7 +64,7 @@ class HtmlHandler extends BaseHandler
 <!DOCTYPE html>
 <html>
 <head>
-    <title>API v1</title>
+    <title>Eversafe API v1</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css" rel="stylesheet" integrity="sha256-hMIwZV8FylgKjXnmRI2YY0HLnozYr7Cuo1JvRtzmPWs= sha512-k+wW4K+gHODPy/0gaAMUNmCItIunOZ+PeLW7iZwkDZH/wMaTrSJTt7zK6TGy6p+rnDBghAxdvu1LX2Ohg0ypDw==" crossorigin="anonymous">
 </head>
@@ -74,7 +74,7 @@ class HtmlHandler extends BaseHandler
 <div class="row">
 <div class="col-xs-10 col-xs-offset-1">
 
-<h1>GWA-RM API v1<br><small>
+<h1>Eversafe API v1<br><small>
 EOT
 .$_SERVER['PATH_INFO'].
 <<<EOT
