@@ -43,6 +43,9 @@ options: {
   angleOffset: -125,
   angleArc: 250
 }}
+$('#energyNow').each(function(e){
+               $(this).val($(this).val()+'W'); 
+            });
     $scope.button = [];
     $http.get("apiv1/status/1").then(function(response) {
       $scope.button = response.data;
