@@ -100,6 +100,9 @@ options: {
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
     };
+    //// settings
+    $scope.energyInfo = {};
+    $scope.personalInfo = {};
 
   }).directive('capitalize', function() {
     return {
