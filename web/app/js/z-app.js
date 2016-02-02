@@ -36,13 +36,13 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     /////////////////// Buttons ///////////////////////
     //
     //
-    $scope.energyNow = {
+    $scope.energyNow = angular.fromJson("{
     value: 70,
 options: {
   fgColor: '#66CC66',
   angleOffset: -125,
   angleArc: 250
-};
+}}");
     $scope.button = [];
     $http.get("apiv1/status/1").then(function(response) {
       $scope.button = response.data;
