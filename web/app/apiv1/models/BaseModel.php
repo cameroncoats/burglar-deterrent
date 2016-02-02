@@ -9,7 +9,7 @@ class BaseModel
     public function __construct()
     {
       global $database;
-      $db = new PDO($database['connstring']) or die("Database Problemo");
+      $db = new PDO($database['connstring'],$database['username'],$database['password']) or die("Database Problemo");
         $this->_db = $db;
         return true;
     }
