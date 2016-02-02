@@ -41,10 +41,11 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
 options: {
   fgColor: '#66CC66',
   angleOffset: -125,
-  angleArc: 250
+  angleArc: 250,
+  readOnly: true
 }}
 $('#energyNow').each(function(e){
-               $(this).val($(this).val()+'W'); 
+               $(this).val($(this).val()+'W');
             });
     $scope.button = [];
     $http.get("apiv1/status/1").then(function(response) {
