@@ -1,6 +1,6 @@
 // define the app
 // =============================================================================
-var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty','chart.js'])
+var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty','chart.js','ui.knob'])
 
 // routes
 // =============================================================================
@@ -36,6 +36,13 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     /////////////////// Buttons ///////////////////////
     //
     //
+    $scope.energyNow = {
+    value: 70,
+options: {
+  fgColor: '#66CC66',
+  angleOffset: -125,
+  angleArc: 250
+};
     $scope.button = [];
     $http.get("apiv1/status/1").then(function(response) {
       $scope.button = response.data;
