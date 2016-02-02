@@ -1,6 +1,6 @@
 // define the app
 // =============================================================================
-var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty'])
+var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty','chart.js'])
 
 // routes
 // =============================================================================
@@ -40,6 +40,12 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     $http.get("apiv1/status/1").then(function(response) {
       $scope.button = response.data;
     })
+    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.series = ['Series A', 'Series B'];
+  $scope.data = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
     $scope.isHome = function() {
       if ($scope.button != 'home') {
         $http.put("apiv1/status/1/home");
