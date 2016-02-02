@@ -20,7 +20,7 @@
         <div class="panel-body">
           <div class="col-xs-10 col-xs-offset-1">
             <form class="form-horizontal">
-              <h4><i class="fa fa-power-off"></i>Your Energy <small>What keeps the lights on?</small>
+              <h4><i class="fa fa-power-off"></i>Your Energy <small>What keeps the lights on?</small></h4>
               <div class="form-group" ng-class="{'has-error': (formErrors.indexOf('energy-billing')>-1)}">
                 <label class="control-label" for="energy-billing">How is your electricity billed?</label>
                 <div class="btn-group" name="location">
@@ -30,7 +30,9 @@
             </div>
             <div class="form-group" ng-class="{'has-error': (formErrors.indexOf('perUnit')>-1)}">
               <label class="control-label" for="perUnit">How much do you pay per unit?</label>
-              <input id="f_1" class="form-control" name="perUnit" ng-keypress="keypressHandler($event, 2)" ng-model="energyInfo.perUnit" type="number"></label>
+              <div class="input-group">
+  <span class="input-group-addon">£</span>
+              <input id="f_1" class="form-control" name="perUnit" ng-keypress="keypressHandler($event, 2)" ng-model="energyInfo.perUnit" step="0.01" min="0.01" max="5.00" type="number"></div></label>
           </div>
           </div>
         </div>
