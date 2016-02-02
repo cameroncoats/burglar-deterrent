@@ -105,7 +105,7 @@ options: {
     $scope.energyInfo.variableRateTimes = [];
     $scope.personalInfo = {};
     $scope.addToFieldset = function(name, scope) {
-         var newItemNo = $scope[scope][name].length + 1;
+         var newItemNo = $scope.energyInfo.variableRateTimes.length + 1;
          $scope.energyInfo.variableRateTimes.push({
            'id': name + newItemNo
          });
