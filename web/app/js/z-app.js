@@ -42,11 +42,9 @@ options: {
   fgColor: '#66CC66',
   angleOffset: -125,
   angleArc: 250,
-  readOnly: true
-}}
-$('#energyNow').each(function(e){
-               $(this).val($(this).val()+'W');
-            });
+  readOnly: true,
+  format : function(v){ return v + ' W';}
+}};
     $scope.button = [];
     $http.get("apiv1/status/1").then(function(response) {
       $scope.button = response.data;
