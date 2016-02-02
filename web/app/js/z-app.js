@@ -101,7 +101,7 @@ options: {
       $scope.alerts.splice(index, 1);
     };
     //// settings
-    $scope.energyInfo = {billingType:'variable',variableRateTimes:{[],[]}};
+    $scope.energyInfo = {billingType:'variable'};
     $scope.personalInfo = {};
     $scope.addToFieldset = function(name, scope) {
          var newItemNo = $scope[scope][name].length + 1;
