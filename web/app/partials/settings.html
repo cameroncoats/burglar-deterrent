@@ -36,7 +36,7 @@
               </div>
             </label>
           </div>
-          <div class="form-group" ng-class="{'has-error': (formErrors.indexOf('perUnit')>-1)}" ng-if="energyInfo.billingType=='fixed'">
+          <div class="form-group" ng-class="{'has-error': (formErrors.indexOf('perUnit')>-1)}" ng-show="energyInfo.billingType=='fixed'">
             <label class="control-label" for="perUnit">How much do you pay per unit?</label>
             <div class="input-group">
               <span class="input-group-addon">£</span>
@@ -44,7 +44,7 @@
           </label>
         </div>
         <!--- Variable rate --->
-        <div ng-if="energyInfo.billingType == 'variable'">
+        <div ng-show="energyInfo.billingType == 'variable'">
           <div class="form-group" ng-repeat="row in energyInfo.variableRateTimes">
 
             I pay
