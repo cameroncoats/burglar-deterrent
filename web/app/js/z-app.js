@@ -101,8 +101,20 @@ options: {
       $scope.alerts.splice(index, 1);
     };
     //// settings
-    $scope.energyInfo = {};
+    $scope.energyInfo = {billingType:'variable',variableRateTimes:{[],[]}};
     $scope.personalInfo = {};
+    $scope.addToFieldset = function(name, scope) {
+         var newItemNo = $scope[scope][name].length + 1;
+         $scope[scope][name].push({
+           'id': name + newItemNo
+         });
+       };
+       //remove a fieldset
+       $scope.removeFromFieldset = function(name, scope, index) {
+
+         index = index || $scope[scope][name].length - 1;
+         $scope[scope][name].splice(index);
+       };
 
   }).directive('capitalize', function() {
     return {
