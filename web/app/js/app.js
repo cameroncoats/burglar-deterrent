@@ -1,6 +1,6 @@
 // define the app
 // =============================================================================
-var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty'])
+var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty'])
 
 // routes
 // =============================================================================
@@ -10,6 +10,11 @@ var app = angular.module('gwa-rm', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngS
       .state('home', {
         url: '/home',
         templateUrl: 'partials/home.html',
+        controller: 'mainController'
+      })
+      .state('energy', {
+        url: '/energy',
+        templateUrl: 'partials/energy.html',
         controller: 'mainController'
       })
       .state('settings', {
