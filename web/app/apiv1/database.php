@@ -1,5 +1,4 @@
 <?php
-<?php
 //Database connection Settings
 $database=array();
 $database['name']='eversafe'; // Database Name
