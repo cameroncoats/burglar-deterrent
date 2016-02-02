@@ -46,19 +46,31 @@
         <!--- Variable rate --->
         <div ng-show="energyInfo.billingType == 'variable'">
           <div class="form-group" ng-repeat="row in energyInfo.variableRateTimes">
-
+            <div class="row">
+              <div class="col-xs-2">
             I pay
+          </div>
+            <div class="col-xs-3">
             <div class="input-group">
               <span class="input-group-addon">£</span>
               <input class="form-control" type="number" step="0.01" min="0.01" max="5.00"></div>
+            </div>
+              <div class="col-xs-2">
             between
+          </div>
+          <div class="col-xs-2">
             <input class="form-control" type="time">
+          </div>
+          <div class="col-xs-1">
             and
+          </div>
+          <div class="col-xs-2">
             <input class="form-control" type="time">
             <a class="btn btn-danger" ng-click="removeFromFieldset('energyInfo','variableRateTimes',$index)">
               <i class="fa fa-times"></i>
             </a>
-
+          </div>
+          </div>
           </div>
           <a class="btn btn-success" ng-click="addToFieldset('energyInfo','variableRateTimes')">
             <i class="fa fa-plus"></i>
