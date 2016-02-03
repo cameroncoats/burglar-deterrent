@@ -15,7 +15,7 @@
               <input id="f_1" class="form-control" name="name" ng-keypress="keypressHandler($event, 1)" ng-model="personalInfo.name" type="text"></label>
           </div>
           <div class="form-group" ng-class="{'has-error': (formErrors.indexOf('email')>-1)}">
-            <label class="control-label" for="email">What's your email?</label>
+            <label class="control-label" for="email">Your email</label>
             <input id="f_2" class="form-control" name="email" ng-keypress="keypressHandler($event, 2)" ng-model="personalInfo.email" type="email"></label>
         </div>
         </div>
@@ -80,6 +80,7 @@
           </a>
           <!-- endrpt -->
         </div>
+        <hr>
         <h4>
           <i class="fa fa-lock"></i> Your Eversafe
 
