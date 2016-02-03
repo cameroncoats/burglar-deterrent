@@ -63,6 +63,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
   )
     // This hooks al auth events to check everything as soon as the app starts
     auth.hookEvents();
+  }
   )
   // Main controller
   // =============================================================================
