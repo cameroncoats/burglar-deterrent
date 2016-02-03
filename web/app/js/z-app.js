@@ -1,6 +1,6 @@
 // define the app
 // =============================================================================
-var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty', 'chart.js', 'ui.knob'])
+var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty', 'chart.js', 'ui.knob', 'auth0', 'angular-storage', 'angular-jwt'])
 
 // routes
 // =============================================================================
@@ -29,6 +29,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       })
       // catchall state
     $urlRouterProvider.otherwise('/login');
+
     authProvider.init({
       domain: 'eversafe.eu.auth0.com',
       clientID: 'IJCwctuR17Gj2sECKB6NXQsBZ3JiGleT',
