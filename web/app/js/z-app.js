@@ -175,6 +175,10 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
 
 
     }
+    authProvider.on(event, function(){
+      $scope.profile = auth.profile;
+      $scope.loggedIn = auth.isAuthenticated;
+    })
     $scope.profile = auth.profile;
     $scope.loggedIn = auth.isAuthenticated;
 
