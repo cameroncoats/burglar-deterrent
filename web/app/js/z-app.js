@@ -187,12 +187,13 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
 }
 $scope.updateInfo();
     $scope.logout = function() {
+      $state.go('login');
       auth.signout();
       store.remove('profile');
       store.remove('token');
       $scope.profile = null;
       $scope.loggedIn = false;
-      $state.go('login');
+
     }
 
   })
