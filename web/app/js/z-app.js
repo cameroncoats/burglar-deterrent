@@ -10,17 +10,23 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       .state('home', {
         url: '/home',
         templateUrl: 'partials/home.html',
-         data: { requiresLogin: true }
+        data: {
+          requiresLogin: true
+        }
       })
       .state('energy', {
         url: '/energy',
         templateUrl: 'partials/energy.html',
-         data: { requiresLogin: true }
+        data: {
+          requiresLogin: true
+        }
       })
       .state('settings', {
         url: '/settings',
         templateUrl: 'partials/settings.html',
-         data: { requiresLogin: true }
+        data: {
+          requiresLogin: true
+        }
       })
       .state('login', {
         url: '/login',
@@ -47,25 +53,23 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       limit: 1
     });
   }]).run(function($rootScope, auth, store, jwtHelper, $location) {
-  // This events gets triggered on refresh or URL change
-  $rootScope.$on('$locationChangeStart', function() {
-    var token = store.get('token');
-    if (token) {
-      if (!jwtHelper.isTokenExpired(token)) {
-        if (!auth.isAuthenticated) {
-          auth.authenticate(store.get('profile'), token);
+    // This events gets triggered on refresh or URL change
+    $rootScope.$on('$locationChangeStart', function() {
+        var token = store.get('token');
+        if (token) {
+          if (!jwtHelper.isTokenExpired(token)) {
+            if (!auth.isAuthenticated) {
+              auth.authenticate(store.get('profile'), token);
+            }
+          } else {
+            // Either show the login page or use the refresh token to get a new idToken
+            $location.path('/');
+          }
         }
-      } else {
-        // Either show the login page or use the refresh token to get a new idToken
-        $location.path('/');
-      }
-    }
-  }
-  )
-    // This hooks al auth events to check everything as soon as the app starts
+      })
+      // This hooks al auth events to check everything as soon as the app starts
     auth.hookEvents();
-  }
-  )
+  })
   // Main controller
   // =============================================================================
   .controller('mainController', function($rootScope, $scope, $http, $q, $window, $location, $interval, toasty, auth, store) {
@@ -171,14 +175,16 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
 
 
     }
+    $scope.profile = auth.profile;
+    $scope.loggedIn = auth.isAuthenticated;
 
-  $scope.logout = function() {
-    auth.signout();
-    store.remove('profile');
-    store.remove('token');
-    $scope.profile = null;
-    $scope.loggedIn = false;
-  }
+    $scope.logout = function() {
+      auth.signout();
+      store.remove('profile');
+      store.remove('token');
+      $scope.profile = null;
+      $scope.loggedIn = false;
+    }
 
   })
   .directive('capitalize', function() {
