@@ -25,7 +25,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       .state('login', {
         url: '/login',
         templateUrl: 'partials/login.html',
-        controller: 'mainController', data: { requiresLogin: true }
+        controller: 'mainController'
       })
       // catchall state
     $urlRouterProvider.otherwise('/login');
