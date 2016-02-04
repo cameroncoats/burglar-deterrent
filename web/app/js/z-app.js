@@ -34,7 +34,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
 
       })
       // catchall state
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/home');
 
     authProvider.init({
       domain: 'eversafe.eu.auth0.com',
@@ -52,7 +52,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     toastyConfigProvider.setConfig({
       limit: 1
     });
-  }]).run(function($rootScope, auth, store, jwtHelper, $location) {
+  }]).run(function($rootScope, auth, store, jwtHelper, $location,$state) {
     // This events gets triggered on refresh or URL change
     $rootScope.$on('$locationChangeStart', function() {
         var token = store.get('token');
@@ -60,6 +60,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
           if (!jwtHelper.isTokenExpired(token)) {
             if (!auth.isAuthenticated) {
               auth.authenticate(store.get('profile'), token);
+              $state.go('home');
             }
           } else {
             // Either show the login page or use the refresh token to get a new idToken
@@ -175,7 +176,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
 
 
     }
-    
+
     $scope.profile = auth.profile;
     $scope.loggedIn = auth.isAuthenticated;
 
