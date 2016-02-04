@@ -168,12 +168,15 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       });
 
     }
+
+  }).controller('navbarController', function($scope, auth, store){
     $scope.logout = function() {
       auth.signout();
       store.remove('profile');
       store.remove('token');
     }
-  }).directive('capitalize', function() {
+  })
+  .directive('capitalize', function() {
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, modelCtrl) {
