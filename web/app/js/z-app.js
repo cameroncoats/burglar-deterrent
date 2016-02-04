@@ -68,7 +68,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
   )
   // Main controller
   // =============================================================================
-  .controller('mainController', function($scope, $http, $q, $window, $location, $interval, toasty, auth, store) {
+  .controller('mainController', function($scope, $http, $q, $window, $location, $interval, toasty, auth, store, authProvider) {
     /////////////////// Buttons ///////////////////////
     //
     //
@@ -166,17 +166,33 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       }, function() {
         // Error callback
       });
+      $scope.$on('authChange', function() {
+      $scope.profile = auth.profile;
+      $scope.loggedIn = auth.isAuthenticated;
+    });
 
     }
+    authProvider.on(loginSuccess, $scope.updateLoginStatus);
+    authProvider.on(logout, $scope.updateLoginStatus);
+    $scope.updateLoginStatus = function(){
+    $scope.profile = auth.profile;
+    $scope.loggedIn = auth.isAuthenticated;
+  }
 
-  }).controller('navbarController', function($scope, auth, store){
+  }).controller('navbarController', function($scope, auth, store, authProvider){
     $scope.logout = function() {
       auth.signout();
       store.remove('profile');
       store.remove('token');
     }
+    authProvider.on(loginSuccess, $scope.updateLoginStatus);
+    authProvider.on(logout, $scope.updateLoginStatus);
+    $scope.updateLoginStatus = function(){
     $scope.profile = auth.profile;
     $scope.loggedIn = auth.isAuthenticated;
+  }
+  });
+  $scope.$emit('authChange');
   })
   .directive('capitalize', function() {
     return {
