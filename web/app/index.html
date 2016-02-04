@@ -78,7 +78,6 @@
               <li ui-sref-active="active" ng-hide="loggedIn"><a ui-sref="login">Log In</span></a></li>
               <li ui-sref-active="active" ng-show="loggedIn"><a ui-sref="home">Home</span></a></li>
               <li ui-sref-active="active" ng-show="loggedIn"><a ui-sref="energy">Energy</span></a></li>
-              <li ui-sref-active="active" ng-show="loggedIn"><a ui-sref="settings"><span><i class="fa fa-cog fa-fw fa-lg" style="margin-top:4px;height:18px;"></i></span></a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
@@ -100,6 +99,9 @@
                                       <div class="col-lg-8">
                                           <p class="text-left"><strong>{{profile.nickname}}</strong></p>
                                           <p class="text-left small">{{profile.email}}</p>
+                                          <p class="text-left">
+                                            <a ui-sref='settings' class="btn btn-primary btn-block btn-sm">My Settings</a>
+                                        </p>
                                       </div>
                                   </div>
                               </div>
