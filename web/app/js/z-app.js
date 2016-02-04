@@ -10,22 +10,22 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       .state('home', {
         url: '/home',
         templateUrl: 'partials/home.html',
-        controller: 'mainController', data: { requiresLogin: true }
+         data: { requiresLogin: true }
       })
       .state('energy', {
         url: '/energy',
         templateUrl: 'partials/energy.html',
-        controller: 'mainController', data: { requiresLogin: true }
+         data: { requiresLogin: true }
       })
       .state('settings', {
         url: '/settings',
         templateUrl: 'partials/settings.html',
-        controller: 'mainController', data: { requiresLogin: true }
+         data: { requiresLogin: true }
       })
       .state('login', {
         url: '/login',
         templateUrl: 'partials/login.html',
-        controller: 'mainController'
+
       })
       // catchall state
     $urlRouterProvider.otherwise('/login');
@@ -163,23 +163,23 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
         store.set('profile', profile);
         store.set('token', token);
         $location.path('/');
-        $scope.updateLoginStatus;
+        $scope.profile = auth.profile;
+        $scope.loggedIn = auth.isAuthenticated;
       }, function() {
         // Error callback
       });
 
 
     }
-    $scope.updateLoginStatus = function(){
-    $scope.profile = auth.profile;
-    $scope.loggedIn = auth.isAuthenticated;
-  }
+
   $scope.logout = function() {
     auth.signout();
     store.remove('profile');
     store.remove('token');
+    $scope.profile = null;
+    $scope.loggedIn = false;
   }
-  
+
   })
   .directive('capitalize', function() {
     return {
