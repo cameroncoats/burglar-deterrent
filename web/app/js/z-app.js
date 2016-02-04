@@ -74,6 +74,10 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
   // Main controller
   // =============================================================================
   .controller('mainController', function($rootScope, $scope, $http, $q, $window, $location, $interval, toasty, auth, store) {
+    $scope.updateInfo = function(){
+    $scope.profile = auth.profile;
+    $scope.loggedIn = auth.isAuthenticated;
+}
     /////////////////// Buttons ///////////////////////
     //
     //
