@@ -68,7 +68,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
   )
   // Main controller
   // =============================================================================
-  .controller('mainController', function($scope, $http, $q, $window, $location, $interval, toasty, auth, store, authProvider) {
+  .controller('mainController', function($rootScope, $scope, $http, $q, $window, $location, $interval, toasty, auth, store) {
     /////////////////// Buttons ///////////////////////
     //
     //
@@ -175,15 +175,15 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     $scope.loggedIn = auth.isAuthenticated;
   }
 
-  }).controller('navbarController', function($scope, auth, store, authProvider){
+  }).controller('navbarController', function($scope, auth, store){
     $scope.logout = function() {
       auth.signout();
       store.remove('profile');
       store.remove('token');
     }
     $scope.updateLoginStatus = function(){
-    $scope.profile = auth.profile;
-    $scope.loggedIn = auth.isAuthenticated;
+    $rootScope.profile = auth.profile;
+    $rootScope.loggedIn = auth.isAuthenticated;
   }
   })
   .directive('capitalize', function() {
