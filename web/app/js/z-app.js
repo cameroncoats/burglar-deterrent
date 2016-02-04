@@ -163,17 +163,13 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
         store.set('profile', profile);
         store.set('token', token);
         $location.path('/');
+        $scope.updateLoginStatus;
       }, function() {
         // Error callback
       });
-      $scope.$on('authChange', function() {
-      $scope.profile = auth.profile;
-      $scope.loggedIn = auth.isAuthenticated;
-    });
+
 
     }
-    authProvider.on(loginSuccess, $scope.updateLoginStatus);
-    authProvider.on(logout, $scope.updateLoginStatus);
     $scope.updateLoginStatus = function(){
     $scope.profile = auth.profile;
     $scope.loggedIn = auth.isAuthenticated;
@@ -185,8 +181,6 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       store.remove('profile');
       store.remove('token');
     }
-    authProvider.on(loginSuccess, $scope.updateLoginStatus);
-    authProvider.on(logout, $scope.updateLoginStatus);
     $scope.updateLoginStatus = function(){
     $scope.profile = auth.profile;
     $scope.loggedIn = auth.isAuthenticated;
