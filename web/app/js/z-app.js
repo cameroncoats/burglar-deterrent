@@ -192,6 +192,7 @@ $scope.updateInfo();
       store.remove('token');
       $scope.profile = null;
       $scope.loggedIn = false;
+      $state.go("login");
     }
 
   })
