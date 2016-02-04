@@ -77,6 +77,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     /////////////////// Buttons ///////////////////////
     //
     //
+    $rootScope.$on('$stateChangeSuccess', $scope.updateInfo());
     $scope.energyNow = {
       value: 70,
       options: {
@@ -176,10 +177,11 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
 
 
     }
-
+    $scope.updateInfo = function(){
     $scope.profile = auth.profile;
     $scope.loggedIn = auth.isAuthenticated;
-
+}
+$scope.updateInfo();
     $scope.logout = function() {
       auth.signout();
       store.remove('profile');
