@@ -174,17 +174,12 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     $scope.profile = auth.profile;
     $scope.loggedIn = auth.isAuthenticated;
   }
-
-  }).controller('navbarController', function($scope, auth, store){
-    $scope.logout = function() {
-      auth.signout();
-      store.remove('profile');
-      store.remove('token');
-    }
-    $scope.updateLoginStatus = function(){
-    $rootScope.profile = auth.profile;
-    $rootScope.loggedIn = auth.isAuthenticated;
+  $scope.logout = function() {
+    auth.signout();
+    store.remove('profile');
+    store.remove('token');
   }
+  
   })
   .directive('capitalize', function() {
     return {
