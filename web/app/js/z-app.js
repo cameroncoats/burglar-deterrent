@@ -72,7 +72,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
   })
   // Main controller
   // =============================================================================
-  .controller('mainController', function($rootScope, $scope, $http, $q, $window, $location, $interval, toasty, auth, store) {
+  .controller('mainController', function($rootScope, $scope, $http, $q, $window, $location, $interval, toasty, auth, store, authProvider) {
     /////////////////// Buttons ///////////////////////
     //
     //
