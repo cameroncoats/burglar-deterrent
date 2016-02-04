@@ -192,8 +192,6 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     $scope.loggedIn = auth.isAuthenticated;
   }
   });
-  $scope.$emit('authChange');
-  })
   .directive('capitalize', function() {
     return {
       require: 'ngModel',
