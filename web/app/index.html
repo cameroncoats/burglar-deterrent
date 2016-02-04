@@ -36,6 +36,27 @@
   <script src="js/ui-bootstrap-0.13.0.min.js"></script>
   <script src="js/z-app.js"></script>
   <!--endinject-->
+  <!-- Navbar style (sorry it's not linked :( )-->
+  <style>
+  .navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+</style>
 </head>
 
 <body ng-app="eversafe">
@@ -59,9 +80,44 @@
               <li ui-sref-active="active"><a ui-sref="settings"><span><i class="fa fa-cog fa-fw fa-lg" style="margin-top:4px;height:18px;"></i></span></a></li>
             </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-        <li><a ng-click="logout()"><i class="fa fa-logout"></i>Logout</a></li>
-      </ul>
+            <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <span class="glyphicon glyphicon-user"></span> 
+                          <strong>{{profile.nickname}}</strong>
+                          <span class="glyphicon glyphicon-chevron-down"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <div class="navbar-login">
+                                  <div class="row">
+                                      <div class="col-lg-4">
+                                          <p class="text-center">
+                                              <span class="icon-size"><img ng-src="profile.picture"></span>
+                                          </p>
+                                      </div>
+                                      <div class="col-lg-8">
+                                          <p class="text-left"><strong>{{profile.nickname}}</strong></p>
+                                          <p class="text-left small">{{profile.email}}</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="divider"></li>
+                          <li>
+                              <div class="navbar-login navbar-login-session">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <p>
+                                              <a href="" ng-click="logout" class="btn btn-danger btn-block">Log Out</a>
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
     </div></div>
       </nav>
   <div ui-view>

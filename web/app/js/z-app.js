@@ -175,6 +175,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
       store.remove('profile');
       store.remove('token');
     }
+    $scope.profile = auth;
   })
   .directive('capitalize', function() {
     return {
