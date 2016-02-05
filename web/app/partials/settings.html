@@ -11,7 +11,7 @@
         <div class="list-group">
     <a href="#" class="list-group-item" ng-repeat="plug in eversafePlugs">
     <i class="fa fa-plug"></i> {{plug.name}} <span class="text-right"><input
-    bs-switch
+    bs-switch switch-size="mini"
     type="checkbox" ng-model="plug.enabled"></span>
     </a>
 
@@ -25,7 +25,7 @@
     <div class="list-group">
 <a href="#" class="list-group-item" ng-repeat="sensor in eversafeSensors">
 <i class="fa fa-eye"></i> {{sensor.name}} <span class="text-right"><input
-  ng-model="sensor.enabled"
+  ng-model="sensor.enabled"  switch-size="mini"
 bs-switch
 type="checkbox"></span>
 </a>
