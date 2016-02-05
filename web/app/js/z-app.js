@@ -198,6 +198,15 @@ $scope.updateInfo();
 
     }
 
+    $scope.eversafePlugs = [{
+      name:'Living Room',
+      enabled: false
+    },
+  { name:'Upstairs Landing',
+enabled:true}];
+
+    $scope.eversafeSensors = [{name:'Hallway',enabled:true}];
+
   })
   .directive('capitalize', function() {
     return {
