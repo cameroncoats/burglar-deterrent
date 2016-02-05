@@ -81,7 +81,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'n
     /////////////////// Buttons ///////////////////////
     //
     //
-    $rootScope.$on('$stateChangeSuccess', $scope.updateInfo());
+    $rootScope.$on('$stateChangeStart', $scope.updateInfo());
     $scope.energyNow = {
       value: 70,
       options: {
