@@ -1,6 +1,8 @@
 // define the app
 // =============================================================================
-var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask', 'ngSanitize', 'angular-toasty', 'chart.js', 'ui.knob', 'auth0', 'angular-storage', 'angular-jwt'])
+var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
+'ngSanitize', 'angular-toasty', 'chart.js', 'ui.knob', 'auth0', 'angular-storage',
+ 'angular-jwt',"frapontillo.bootstrap-switch"])
 
 // routes
 // =============================================================================
