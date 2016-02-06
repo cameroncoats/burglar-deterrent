@@ -14,7 +14,7 @@ public function getLastWeek($userID){
 }
 public function getUsersPlugs($userID){
   $plugArray = array();
-  $sql = "SELECT chipID FROM `tblUserChip` WHERE `userID` = `:uid` and `chipType` = 'plug'";
+  $sql = "SELECT chipID FROM `tblUserChip` WHERE `userID` = :uid and `chipType` = 'plug'";
   $sth = $this->_db->prepare($sql);
   $sth->bindParam(':uid',$userID,PDO::PARAM_INT);
   $sth->execute();
