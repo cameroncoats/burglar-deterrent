@@ -19,7 +19,6 @@ public function getUsersPlugs($userID){
   $sth->bindParam(':uid',$userID,PDO::PARAM_INT);
   $sth->execute();
   $results = $sth->fetchAll(PDO::FETCH_ASSOC);
-  var_dump($results);
-  return $plugArray;
+  return $results;
 }
 }
