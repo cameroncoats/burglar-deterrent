@@ -199,15 +199,13 @@ $scope.updateInfo();
     }
 
     $scope.eversafePlugs = [{
-      name:'Living Room',
-      enabled: false
-    },
-  { name:'Upstairs Landing',
-enabled:true}];
+      chipName:'Loading...',
+      chipEnabled: false
+    }];
     $scope.getPlugs = function(){
       $http.get("apiv1/TSDB/listPlugs/1").then(function(response) {
         $scope.eversafePlugs = response.data;
-      }
+      });
     }
     $scope.eversafeSensors = [{name:'Hallway',enabled:true}];
 
