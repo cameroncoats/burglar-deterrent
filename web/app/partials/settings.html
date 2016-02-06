@@ -26,7 +26,7 @@
 
     <div class="list-group">
 <a class="list-group-item" ng-repeat="sensor in eversafeSensors">
-<i class="fa" ng-class="{fa-eye: sensor.enabled, fa-eye-slash: !sensor.enabled}"></i> {{sensor.name}} <span class="text-right" style="height:20px !important;"><input
+<i class="fa" ng-class="{fa-eye: sensor.enabled == 'true', fa-eye-slash: sensor.enabled == 'false'}"></i> {{sensor.name}} <span class="text-right" style="height:20px !important;"><input
   ng-model="sensor.enabled"  switch-size="mini"
 bs-switch
 switch-on-color="success"
