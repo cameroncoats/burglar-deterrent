@@ -204,7 +204,11 @@ $scope.updateInfo();
     },
   { name:'Upstairs Landing',
 enabled:true}];
-
+    $scope.getPlugs = function(){
+      $http.get("apiv1/TSDB/listPlugs/1").then(function(response) {
+        $scope.eversafePlugs = response.data;
+      }
+    }
     $scope.eversafeSensors = [{name:'Hallway',enabled:true}];
 
   })

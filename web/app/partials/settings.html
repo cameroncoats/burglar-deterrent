@@ -8,13 +8,13 @@
 
         </h4>
 
-        <div class="list-group">
+        <div class="list-group" ng-init="getPlugs()">
     <a class="list-group-item" ng-repeat="plug in eversafePlugs">
-    <i class="fa fa-plug"></i> {{plug.name}} <span class="text-right" style="height:20px !important;"><input
+    <i class="fa fa-plug"></i> {{plug.locationName}} <span class="text-right" style="height:20px !important;"><input
     bs-switch switch-size="mini"
     switch-on-text="Auto"
     switch-on-color="success"
-    type="checkbox" ng-model="plug.enabled"></span>
+    type="checkbox" ng-model="plug.chipEnabled"></span>
     </a>
 
     </div>
