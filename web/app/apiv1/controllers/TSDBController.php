@@ -8,8 +8,14 @@ class TSDBController extends BaseController
 
   }
   else {
+    if($request->url_elements[2]=="listPlugs"){
+      return $tsdb->getUsersPlugs($request->url_elements[3]);
+    }
+    else {
+      # code...
+
     $this->badRequest('Need to specify time period and user id!');
-  }
+  }}
 }
 
 
