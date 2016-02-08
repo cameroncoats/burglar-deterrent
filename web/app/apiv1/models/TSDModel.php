@@ -23,6 +23,7 @@ public function getMostRecentPower($chipID){
   $sth->bindParam(':cid',$chipID,PDO::PARAM_INT);
   $sth->execute();
   $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+  var_dump($results);
   return $results[0]['tsData'];
 }
 public function getUsersPlugs($userID){
