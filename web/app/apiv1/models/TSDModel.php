@@ -18,7 +18,7 @@ public function getLastWeek($userID, $chipID){
   //
 }
 public function getMostRecentPower($chipID){
-  $sql = "SELECT `tsData` FROM `tblTSDB` WHERE `tsChipID` = :cid LIMIT 1 ORDER BY `tsTime` DESC";
+  $sql = "SELECT `tsValu e` FROM `tblTSDB` WHERE `tsChipID` = :cid ORDER BY `tsTime` DESC LIMIT 0,1";
   $sth = $this->_db->prepare($sql);
   $sth->bindParam(':cid',$chipID,PDO::PARAM_INT);
   $sth->execute();
