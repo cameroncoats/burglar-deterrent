@@ -18,12 +18,12 @@ public function getLastWeek($userID, $chipID){
   //
 }
 public function getMostRecentPower($chipID){
-  $sql = "SELECT `tsValue` FROM `tblTSDB` WHERE `tsChipID` = :cid";
+  $sql = "SELECT `tsData` FROM `tblTSDB` WHERE `tsChipID` = :cid LIMIT 1 ORDER BY `tsTime` DESC";
   $sth = $this->_db->prepare($sql);
   $sth->bindParam(':cid',$chipID,PDO::PARAM_INT);
   $sth->execute();
   $results = $sth->fetchAll(PDO::FETCH_ASSOC);
-  return $results[0]['tsValue'];
+  return $results[0]['tsData'];
 }
 public function getUsersPlugs($userID){
   $plugArray = array();
@@ -58,7 +58,7 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo){
   $results = $sth->fetchAll(PDO::FETCH_ASSOC);
   $i = 0;
   foreach($results as $row){
-    $power = $row['tsValue'] / 1000;
+    $power = $row['tsData'] / 1000;
     $startTime = $row['UNIX_TIMESTAMP(`tsTime`)'];
     if($i < count($results)){
     $endTime = $results[$i+1]['UNIX_TIMESTAMP(`tsTime`)'];
