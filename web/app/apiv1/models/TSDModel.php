@@ -17,6 +17,14 @@ public function getLastWeek($userID, $chipID){
   }
   //
 }
+public function getMostRecentPower($chipID){
+  $sql = "SELECT `tsValue` FROM `tblTSDB` WHERE `tsChipID` = :cid";
+  $sth = $this->_db->prepare($sql);
+  $sth->bindParam(':cid',$chipID,PDO::PARAM_INT);
+  $sth->execute();
+  $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+  return $results[0]['tsValue'];
+}
 public function getUsersPlugs($userID){
   $plugArray = array();
   $sql = "SELECT chipID,locationName,chipEnabled FROM `tblUserChip` WHERE `userID` = :uid and `chipType` = 'plug'";

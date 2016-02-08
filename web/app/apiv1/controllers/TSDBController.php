@@ -12,9 +12,11 @@ class TSDBController extends BaseController
       return $tsdb->getUsersPlugs($request->url_elements[3]);
     }
     else {
-      # code...
-
-    $this->badRequest('Need to specify time period and user id!');
+      if($request->url_elements[2] == "current"){
+        return $tsdb->getMostRecentPower($request->url_elements[3]);
+      }
+      else{
+    $this->badRequest('Need to specify time period and user id!');}
   }}
 }
 
