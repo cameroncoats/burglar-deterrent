@@ -38,6 +38,29 @@ public function getLastWeek($userID, $chipID){
   return $totalArray;
 }
 /**
+ * Function gets the energy usage of the last day, split into 1 hour blocks
+ * @param  (int) $userID The ID of the user requesting power usage
+ *                       	OR
+ * @param  (int) $chipID The chip ID if power for a specific plug is requested
+ * @return array         Returns an array of 14 values for average energy usage over 12 hours
+ */
+public function getLastDay($userID, $chipID){
+  $i=0;
+  if(isset($chipID)){$plugs[0]['chipID'] = $chipID;}else{$plugs = $this->getUsersPlugs($userID);}
+  foreach($plugs as $plug){
+    $pTotal[$i] = $this->getPlugEnergyUsageDay($plug['chipID']);
+    $i++;
+  }
+  $totalArray = array();
+
+  foreach ($pTotal as $k=>$plugTotals) {
+    foreach ($plugTotals as $timePeriod=>$power) {
+      $totalArray[$timePeriod]+=$power;
+    }
+  }
+  return $totalArray;
+}
+/**
  * Function sums the most recent values for each of the plugs
  * @param  (int) $userID the ID of the user requesting the info
  * @return (float)   Returns a numerical value for power usage
