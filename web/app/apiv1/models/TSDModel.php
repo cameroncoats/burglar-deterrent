@@ -9,13 +9,20 @@ public function addData($chipid,$value){
  $sth -> execute();
 }
 public function getLastWeek($userID, $chipID){
-
+  $i=0;
   if(isset($chipID)){$plugs[0]['chipID'] = $chipID;}else{$plugs = $this->getUsersPlugs($userID);}
   foreach($plugs as $plug){
-    $this->getPlugEnergyUsage($plug['chipID']);
-
+    $pTotal[$i] = $this->getPlugEnergyUsage($plug['chipID']);
+    $i++;
   }
-  //
+  $totalArray = array();
+
+  foreach ($pTotal as $k=>$plugTotals) {
+    foreach ($plugTotals as $timePeriod=>$power) {
+      $totalArray[$timePeriod]+=$power;
+    }
+  }
+  return $totalArray;
 }
 public function getMostRecentPowerUser($userID){
   $plugs = $this->getUsersPlugs($userID);
@@ -44,7 +51,7 @@ public function getUsersPlugs($userID){
   $results = $sth->fetchAll(PDO::FETCH_ASSOC);
   return $results;
 }
-protected function getPlugEnergyUsage($chipID){
+protected function getPlugEnergyUsageWeek($chipID){
   $i = 14;
     while($i>0){
       $i--;
@@ -54,11 +61,20 @@ protected function getPlugEnergyUsage($chipID){
     }
     return $result;
 }
-protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo){
-  // one time period is 12 hours
+protected function getPlugEnergyUsageDay($chipID){
+  $i = 24;
+    while($i>0){
+      $i--;
+      $tpUsage = $this->getTimePeriodEnergyUse($chipID,$i,3600);
+      $result[24-$i] = $tpUsage;
+
+    }
+    return $result;
+}
+protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLength = 43200){
   $energyUse = 0;
-  $timestampStart = time() - ($timePeriodsAgo * 12 * 60 * 60);
-  $timestampEnd = time() - (($timePeriodsAgo-1) * 12 * 60 * 60);
+  $timestampStart = time() - ($timePeriodsAgo * $timePeriodLength);
+  $timestampEnd = time() - (($timePeriodsAgo-1) * $timePeriodLength);
   $sql = "SELECT *,UNIX_TIMESTAMP(`tsTime`) FROM `tblTSDB` WHERE `tsChipID` = :cid AND UNIX_TIMESTAMP(`tsTime`) > :startTime AND UNIX_TIMESTAMP(`tsTime`) < :endTime";
   $sth = $this->_db->prepare($sql);
   $sth->bindParam(':cid',$chipID,PDO::PARAM_INT);
