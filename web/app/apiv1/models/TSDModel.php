@@ -1,13 +1,26 @@
 <?php
 class TSDModel extends BaseModel
 {
+  /**
+   * Simple function to add time series data to the database
+   * @param (int) $chipid The chip ID of the device sending information
+   * @param (varchar) $value  The data value to write to the DB
+   * @return (bool) true on successful insert
+   */
 public function addData($chipid,$value){
  $sql = "INSERT INTO `tblTSDB` (`tsTime`,`tsData`,`tsChipID`) VALUES (CURRENT_TIMESTAMP,:data,:chip)";
  $sth = $this->_db->prepare($sql);
  $sth -> bindParam(":data",$value,PDO::PARAM_STR);
  $sth -> bindParam(":chip",$chipid,PDO::PARAM_INT);
- $sth -> execute();
+ return $sth -> execute();
 }
+/**
+ * Function gets the energy usage of the last week, split into 12 hour blocks
+ * @param  (int) $userID The ID of the user requesting power usage
+ *                       	OR
+ * @param  (int) $chipID The chip ID if power for a specific plug is requested
+ * @return array         Returns an array of 14 values for average energy usage over 12 hours
+ */
 public function getLastWeek($userID, $chipID){
   $i=0;
   if(isset($chipID)){$plugs[0]['chipID'] = $chipID;}else{$plugs = $this->getUsersPlugs($userID);}
@@ -24,6 +37,11 @@ public function getLastWeek($userID, $chipID){
   }
   return $totalArray;
 }
+/**
+ * Function sums the most recent values for each of the plugs
+ * @param  (int) $userID the ID of the user requesting the info
+ * @return (float)   Returns a numerical value for power usage
+ */
 public function getMostRecentPowerUser($userID){
   $plugs = $this->getUsersPlugs($userID);
   $totalPower = 0;
@@ -33,6 +51,11 @@ public function getMostRecentPowerUser($userID){
   }
   return $totalPower;
 }
+/**
+ * Function returns the most recent power for a single chip ID
+ * @param  (int) $chipID The chip to find the power usage for
+ * @return (float)         The most recent power usage of the chip
+ */
 public function getMostRecentPower($chipID){
   $sql = "SELECT `tsData` FROM `tblTSDB` WHERE `tsChipID` = :cid ORDER BY `tsTime` DESC LIMIT 0,1";
   $sth = $this->_db->prepare($sql);
@@ -42,6 +65,11 @@ public function getMostRecentPower($chipID){
   //var_dump($results);
   return $results[0]['tsData'];
 }
+/**
+ * Returns an array of all plugs associated with a user
+ * @param  int $userID The id of the user to select by
+ * @return array         returns an array of all plugs
+ */
 public function getUsersPlugs($userID){
   $plugArray = array();
   $sql = "SELECT chipID,locationName,chipEnabled FROM `tblUserChip` WHERE `userID` = :uid and `chipType` = 'plug'";
