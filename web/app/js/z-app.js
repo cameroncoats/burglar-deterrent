@@ -98,7 +98,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
     };
     $scope.getEnergyNow = function(){
       $http.get("apiv1/TSDB/currentUser/1").then(function(response) {
-        $scope.energyNow.value = response.data;
+        $scope.energyNow.value = response.data;})
     }
     $scope.button = [];
     $http.get("apiv1/status/1").then(function(response) {
