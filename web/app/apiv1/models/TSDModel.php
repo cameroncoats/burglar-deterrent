@@ -123,7 +123,8 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
     $diff = $endTime - $startTime;
     $diffHours = $diff / 3600;
     $energyUse += $diffHours * $power;
-    echo "Row $i \n";
+    echo "$timePeriodsAgo time periods ago \n";
+        echo "Row $i \n";
     echo "Power: $power kW\n";
     echo "Start $startTime, End $endTime \n";
     echo "Time Period: $diffHours hours, $diff seconds \n";
