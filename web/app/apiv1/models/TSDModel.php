@@ -17,6 +17,14 @@ public function getLastWeek($userID, $chipID){
   }
   //
 }
+public function getMostRecentPowerUser($userID){
+  $plugs = $this->getUsersPlugs($userID);
+  foreach($plugs as $plug){
+    $plugPower = $this->getMostRecentPower($plug['chipID'])
+    $totalPower += $plugPower;
+  }
+  return $totalPower;
+}
 public function getMostRecentPower($chipID){
   $sql = "SELECT `tsData` FROM `tblTSDB` WHERE `tsChipID` = :cid ORDER BY `tsTime` DESC LIMIT 0,1";
   $sth = $this->_db->prepare($sql);
