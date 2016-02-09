@@ -160,9 +160,11 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
   echo "$timePeriodsAgo time periods ago \n";
       echo "Row $i \n";
   echo "Power: $power kW\n";
-  echo "Start $startTime, End $endTime \n";
-  echo "Time Period: $diffHours hours, $diff seconds \n";
-  echo "Energy: $energyUse kWh";
+  echo "Start $timestampStart, End $timestampEnd \n";
+  $diffEcho = $timestampEnd - $timestampStart;
+  $diffEH = $diffEcho/3600;;
+  echo "Time Period: $diffEH hours, $diffEcho seconds \n";
+  echo "Energy: $energyUse kWh \n";
   return $energyUse;
 }
 }
