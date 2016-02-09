@@ -12,7 +12,7 @@ public function getLastWeek($userID, $chipID){
   $i=0;
   if(isset($chipID)){$plugs[0]['chipID'] = $chipID;}else{$plugs = $this->getUsersPlugs($userID);}
   foreach($plugs as $plug){
-    $pTotal[$i] = $this->getPlugEnergyUsage($plug['chipID']);
+    $pTotal[$i] = $this->getPlugEnergyUsageWeek($plug['chipID']);
     $i++;
   }
   $totalArray = array();
