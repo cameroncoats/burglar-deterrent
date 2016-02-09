@@ -135,24 +135,34 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
   $results = $sth->fetchAll(PDO::FETCH_ASSOC);
   $i = 0;
   foreach($results as $row){
+    // convert power to kW
     $power = $row['tsData'] / 1000;
+    // define start time as unix stamp
     $startTime = $row['UNIX_TIMESTAMP(`tsTime`)'];
+    // if there are more results to come
     if($i < count($results)){
+      // use the start of the next result as the end time
     $endTime = $results[$i+1]['UNIX_TIMESTAMP(`tsTime`)'];
     }
     else {
+      // or if there are no more results,
+      // use the end of the time period as the end time
+      echo "Using end of TP as end time \n";
       $endTime = $timestampEnd;
     }
+    // the difference is the end time - the start time
+    //
     $diff = $endTime - $startTime;
     $diffHours = $diff / 3600;
     $energyUse += $diffHours * $power;
-    echo "$timePeriodsAgo time periods ago \n";
-        echo "Row $i \n";
-    echo "Power: $power kW\n";
-    echo "Start $startTime, End $endTime \n";
-    echo "Time Period: $diffHours hours, $diff seconds \n";
-    echo "Energy: $energyUse kWh";
-  }
+
+  }// end of foreach
+  echo "$timePeriodsAgo time periods ago \n";
+      echo "Row $i \n";
+  echo "Power: $power kW\n";
+  echo "Start $startTime, End $endTime \n";
+  echo "Time Period: $diffHours hours, $diff seconds \n";
+  echo "Energy: $energyUse kWh";
   return $energyUse;
 }
 }
