@@ -19,8 +19,9 @@ public function getLastWeek($userID, $chipID){
 }
 public function getMostRecentPowerUser($userID){
   $plugs = $this->getUsersPlugs($userID);
+  $totalPower = 0;
   foreach($plugs as $plug){
-    $plugPower = $this->getMostRecentPower($plug['chipID'])
+    $plugPower = $this->getMostRecentPower($plug['chipID']);
     $totalPower += $plugPower;
   }
   return $totalPower;
