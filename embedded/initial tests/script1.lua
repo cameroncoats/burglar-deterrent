@@ -3,7 +3,7 @@ pin=4
 id = node.chipid()
 gpio.mode(pin,gpio.OUTPUT)
 wifi.sta.config("ASK4 Wireless","")
-tmr.alarm(1,2000,1,function()
+tmr.alarm(1,60000,1,function()
 pwr = adc.read(0)
 sk=net.createConnection(net.TCP, 0)
 sk:on("receive", function(sck, c) status = string.match(c, '\"....') end )
