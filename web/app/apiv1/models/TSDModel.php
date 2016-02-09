@@ -83,7 +83,7 @@ protected function getPlugEnergyUsageWeek($chipID){
   $i = 14;
     while($i>0){
       $i--;
-      $tpUsage = $this->getTimePeriodEnergyUse($chipID,$i);
+      $tpUsage = $this->getTimePeriodEnergyUse($chipID,$i,12*60*60);
       $result[14-$i] = $tpUsage;
 
     }
@@ -126,7 +126,7 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
     echo "Row $i \n";
     echo "Power: $power kW\n";
     echo "Start $startTime, End $endTime \n";
-    echo "Time Period: $diffHours hours \n";
+    echo "Time Period: $diffHours hours, $diff seconds \n";
     echo "Energy: $energyUse kWh";
   }
   return $energyUse;
