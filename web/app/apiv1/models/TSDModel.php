@@ -158,7 +158,7 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
     $energyUseThis += ($diffHours * $power);
     $energyUse += $energyUseThis;
     $pTotal += $power;
-    echo "\t Data point power: $power \n\t energy this iteration: $energyUseThis \n\t energy so far: $energyUse \n\t time diff: $diff s, $diffHours hours \n";
+    echo "\t Data point power: $power \n\t energy this iteration: $energyUseThis \n\t energy so far: $energyUse \n\t time diff: $diff s, $diffHours hours \n\t Timestamp: $startTime \n\t Next Timestamp: $endTime";
 
   }// end of foreach
   echo "$timePeriodsAgo time periods ago \n";
