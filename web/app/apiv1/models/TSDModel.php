@@ -135,6 +135,7 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
   $results = $sth->fetchAll(PDO::FETCH_ASSOC);
   $i = 0;
   foreach($results as $row){
+    $power = 0;
     // convert power to kW
     $power = $row['tsData'] / 1000;
     // define start time as unix stamp
