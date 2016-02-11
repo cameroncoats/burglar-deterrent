@@ -126,7 +126,7 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
   $energyUse = 0;
   $timestampStart = time() - ($timePeriodsAgo * $timePeriodLength);
   $timestampEnd = time() - (($timePeriodsAgo-1) * $timePeriodLength);
-  $sql = "SELECT *,UNIX_TIMESTAMP(`tsTime`) FROM `tblTSDB` WHERE `tsChipID` = :cid AND UNIX_TIMESTAMP(`tsTime`) > :startTime AND UNIX_TIMESTAMP(`tsTime`) < :endTime";
+  $sql = "SELECT *,UNIX_TIMESTAMP(`tsTime`) FROM `tblTSDB` WHERE `tsChipID` = :cid AND UNIX_TIMESTAMP(`tsTime`) > :startTime AND UNIX_TIMESTAMP(`tsTime`) < :endTime ORDER BY UNIX_TIMESTAMP(`tsTime`) DESC";
   $sth = $this->_db->prepare($sql);
   $sth->bindParam(':cid',$chipID,PDO::PARAM_INT);
   $sth->bindParam(':startTime',$timestampStart,PDO::PARAM_INT);
@@ -157,7 +157,7 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
     $energyUseThis += ($diffHours * $power);
     $energyUse += $energyUseThis;
     $pTotal += $power;
-    echo "\t Data point power: $power \n\t energy this iteration: $energyUseThis \n\t energy so far: $energyUse \n\t time diff: $diff s, $diffHours hours";
+    echo "\t Data point power: $power \n\t energy this iteration: $energyUseThis \n\t energy so far: $energyUse \n\t time diff: $diff s, $diffHours hours \n";
 
   }// end of foreach
   echo "$timePeriodsAgo time periods ago \n";
