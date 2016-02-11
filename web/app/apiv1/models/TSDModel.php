@@ -140,7 +140,7 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
     // define start time as unix stamp
     $startTime = $row['UNIX_TIMESTAMP(`tsTime`)'];
     // if there are more results to come
-    if($i < count($results)){
+    if(isset($results[$i+1])){
       // use the start of the next result as the end time
     $endTime = $results[$i+1]['UNIX_TIMESTAMP(`tsTime`)'];
     }
@@ -154,12 +154,16 @@ protected function getTimePeriodEnergyUse($chipID,$timePeriodsAgo,$timePeriodLen
     //
     $diff = $endTime - $startTime;
     $diffHours = $diff / 3600;
-    $energyUse += $diffHours * $power;
+    $energyUseThis += ($diffHours * $power);
+    $energyUse += $energyUseThis;
+    $pTotal += $power;
+    echo "\t Data point power: $power \n\t energy this iteration: $energyUseThis \n\t energy so far: $energyUse \n\t time diff: $diff s, $diffHours hours";
 
   }// end of foreach
   echo "$timePeriodsAgo time periods ago \n";
       echo "Row $i \n";
-  echo "Power: $power kW\n";
+  $powerAvg = $pTotal / $i;
+  echo "Power: $powerAvg kW\n";
   echo "Start $timestampStart, End $timestampEnd \n";
   $diffEcho = $timestampEnd - $timestampStart;
   $diffEH = $diffEcho/3600;;
