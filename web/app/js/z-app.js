@@ -101,9 +101,32 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
         $scope.energyNow.value = response.data;})
     }
     $scope.currentStatus={};
+    $scope.updateStatus = function(){
     $http.get("apiv1/status/1").then(function(response) {
       $scope.currentStatus = angular.fromJson(response.data);
     })
+    if($scope.currentStatus.button=="home"){
+      if($scope.currentStatus.method=="auto"){
+        $scope.homeButtonClass="info";
+        $scope.awayButtonClass="primary";
+      }
+      if($scope.currentStatus.method=="manual"){
+        $scope.homeButtonClass="success";
+        $scope.awayButtonClass="primary";
+      }
+    }
+    if($scope.currentStatus.button=="away"){
+      if($scope.currentStatus.method=="auto"){
+        $scope.awayButtonClass="info";
+        $scope.homeButtonClass="primary";
+      }
+      if($scope.currentStatus.method=="manual"){
+        $scope.awayButtonClass="success";
+        $scope.homeButtonClass="primary";
+      }
+    }
+    }
+    $scope.updateStatus();
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Energy Use', 'Energy Cost'];
     $scope.data = [
@@ -114,9 +137,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
       if ($scope.currentStatus.button != 'home') {
         $http.put("apiv1/status/1/home");
         $scope.currentStatusbutton = 'home';
-        $http.get("apiv1/status/1").then(function(response) {
-          $scope.currentStatus = angular.fromJson(response.data);
-        })
+        $scope.updateStatus();
         toasty.success({
           title: 'Welcome Back',
           showClose: false,
@@ -135,9 +156,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
       if ($scope.currentStatus.button != 'away') {
         $http.put("apiv1/status/1/away");
         $scope.currentStatus.button = 'away';
-        $http.get("apiv1/status/1").then(function(response) {
-          $scope.currentStatus = angular.fromJson(response.data);
-        })
+        $scope.updateStatus();
         toasty.success({
           title: "You're Out",
           msg: "We'll keep your home safe",
