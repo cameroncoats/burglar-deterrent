@@ -105,26 +105,6 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
     $http.get("apiv1/status/1").then(function(response) {
       $scope.currentStatus = angular.fromJson(response.data);
     })
-    if($scope.currentStatus.button=="home"){
-      if($scope.currentStatus.method=="auto"){
-        $scope.homeButtonClass="info";
-        $scope.awayButtonClass="primary";
-      }
-      if($scope.currentStatus.method=="manual"){
-        $scope.homeButtonClass="success";
-        $scope.awayButtonClass="primary";
-      }
-    }
-    if($scope.currentStatus.button=="away"){
-      if($scope.currentStatus.method=="auto"){
-        $scope.awayButtonClass="info";
-        $scope.homeButtonClass="primary";
-      }
-      if($scope.currentStatus.method=="manual"){
-        $scope.awayButtonClass="success";
-        $scope.homeButtonClass="primary";
-      }
-    }
     }
     $scope.updateStatus();
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
