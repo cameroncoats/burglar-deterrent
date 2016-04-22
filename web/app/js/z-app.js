@@ -96,7 +96,6 @@ $rootScope.$on('$locationChangeStart', function() {
   })
   // This hooks al auth events to check everything as soon as the app starts
 auth.hookEvents();
-})
     /////////////////// Buttons ///////////////////////
     //
     //
