@@ -6,7 +6,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
 
 // routes
 // =============================================================================
-.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvider, jwtInterceptorProvider,store) {
+.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
     // top level states
     $stateProvider
       .state('home', {
