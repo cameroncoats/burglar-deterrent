@@ -158,7 +158,11 @@ auth.authenticate(store.get('profile'), store.get('token'));
 
     // This hooks al auth events to check everything as soon as the app starts
   auth.hookEvents();
-      $scope.updateStatus;
+      $scope.updateInfo;
+    }
+    $scope.authFuckery=function(){
+      $scope.profile = angular.fromJson(store.get('profile'));
+      $scope.loggedIn = true;
     }
     /////////////////// Alerts ///////////////////////
     //
