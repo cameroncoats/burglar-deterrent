@@ -80,22 +80,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
     $scope.profile = auth.profile;
     $scope.loggedIn = auth.isAuthenticated;
 }
-$rootScope.$on('$locationChangeStart', function() {
-    var token = store.get('token');
-    if (token) {
-      if (!jwtHelper.isTokenExpired(token)) {
-        if (!auth.isAuthenticated) {
-          auth.authenticate(store.get('profile'), token);
-          $state.go('home');
-        }
-      } else {
-        // Either show the login page or use the refresh token to get a new idToken
-        $location.path('/');
-      }
-    }
-  })
-  // This hooks al auth events to check everything as soon as the app starts
-auth.hookEvents();
+
     /////////////////// Buttons ///////////////////////
     //
     //
@@ -169,7 +154,21 @@ auth.hookEvents();
       }
     };
     $scope.authIntervention=function(){
-      auth.hookEvents();
+      var token = store.get('token');
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          if (!auth.isAuthenticated) {
+            auth.authenticate(store.get('profile'), token);
+            $state.go('home');
+          }
+        } else {
+          // Either show the login page or use the refresh token to get a new idToken
+          $location.path('/');
+        }
+      }
+    })
+    // This hooks al auth events to check everything as soon as the app starts
+  auth.hookEvents();
       $scope.updateStatus;
     }
     /////////////////// Alerts ///////////////////////
