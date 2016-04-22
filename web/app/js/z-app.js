@@ -166,7 +166,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
           $location.path('/');
         }
       }
-    })
+    
     // This hooks al auth events to check everything as soon as the app starts
   auth.hookEvents();
       $scope.updateStatus;
