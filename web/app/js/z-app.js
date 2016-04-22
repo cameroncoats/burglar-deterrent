@@ -100,9 +100,9 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
       $http.get("apiv1/TSDB/currentUser/1").then(function(response) {
         $scope.energyNow.value = response.data;})
     }
-    $scope.button = [];
+    $scope.currentStatus={};
     $http.get("apiv1/status/1").then(function(response) {
-      $scope.button = response.data;
+      $scope.currentStatus = angular.fromJson(response.data);
     })
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Energy Use', 'Energy Cost'];

@@ -7,12 +7,14 @@ public function getStatus($id){
  $sth -> bindParam(":id",$id,PDO::PARAM_INT);
  $sth -> execute();
  $results = $sth->fetch();
- return $results['status'];
+ $results['button'] = $results['status'];
+ return $results;
 }
-public function setStatus($id,$status){
-  $sql = "UPDATE `tblStatus` SET `status`=:status WHERE `id`= :id";
+public function setStatus($id,$status,$method){
+  $sql = "UPDATE `tblStatus` SET `status`=:status,`method`=:method WHERE `id`= :id";
   $sth = $this->_db->prepare($sql);
   $sth -> bindParam(":status",$status,PDO::PARAM_STR);
+  $sth -> bindParam(":method",$method,PDO::PARAM_STR);
   $sth -> bindParam(":id",$id,PDO::PARAM_INT);
   $sth -> execute();
   return true;

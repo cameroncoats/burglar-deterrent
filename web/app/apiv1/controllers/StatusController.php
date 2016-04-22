@@ -16,7 +16,8 @@ class StatusController extends BaseController
 }
   public function putAction($request){
   $model = new StatusModel();
-  return $model->setStatus($request->url_elements[2],$request->url_elements[3]);
+  $request->url_elements[4] == 'sensor' ? $method = "auto" : $method = "manual";
+  return $model->setStatus($request->url_elements[2],$request->url_elements[3],$method);
   }
 
 }
