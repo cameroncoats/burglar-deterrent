@@ -154,19 +154,8 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
       }
     };
     $scope.authIntervention=function(){
-      var token = store.get('token');
-      if (token) {
-        if (!jwtHelper.isTokenExpired(token)) {
-          if (!auth.isAuthenticated) {
-            auth.authenticate(store.get('profile'), token);
-            $state.go('home');
-          }
-        } else {
-          // Either show the login page or use the refresh token to get a new idToken
-          $location.path('/');
-        }
-      }
-    
+auth.authenticate(store.get('profile'), store.get('token'));
+
     // This hooks al auth events to check everything as soon as the app starts
   auth.hookEvents();
       $scope.updateStatus;
