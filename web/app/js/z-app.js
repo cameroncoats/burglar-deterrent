@@ -111,9 +111,12 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
       [28, 48, 40, 19, 86, 27, 90]
     ];
     $scope.isHome = function() {
-      if ($scope.button != 'home') {
+      if ($scope.currentStatus.button != 'home') {
         $http.put("apiv1/status/1/home");
-        $scope.button = 'home';
+        $scope.currentStatusbutton = 'home';
+        $http.get("apiv1/status/1").then(function(response) {
+          $scope.currentStatus = angular.fromJson(response.data);
+        })
         toasty.success({
           title: 'Welcome Back',
           showClose: false,
@@ -129,9 +132,12 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
     };
 
     $scope.isAway = function() {
-      if ($scope.button != 'away') {
+      if ($scope.currentStatus.button != 'away') {
         $http.put("apiv1/status/1/away");
-        $scope.button = 'away';
+        $scope.currentStatus.button = 'away';
+        $http.get("apiv1/status/1").then(function(response) {
+          $scope.currentStatus = angular.fromJson(response.data);
+        })
         toasty.success({
           title: "You're Out",
           msg: "We'll keep your home safe",
