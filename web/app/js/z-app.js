@@ -54,7 +54,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
     toastyConfigProvider.setConfig({
       limit: 1
     });
-  }]).run(function($rootScope, auth, store, jwtHelper, $location,$state) {
+  }]).run(function($rootScope, auth, store, jwtHelper, $location,$state,$interval) {
     // This events gets triggered on refresh or URL change
     $rootScope.$on('$locationChangeStart', function() {
         var token = store.get('token');
@@ -107,6 +107,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
     })
     }
     $scope.updateStatus();
+    $interval($scope.updateStatus,5000);
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
     $scope.series = ['Energy Use', 'Energy Cost'];
     $scope.data = [
