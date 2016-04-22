@@ -161,8 +161,9 @@ auth.authenticate(store.get('profile'), store.get('token'));
       $scope.updateInfo;
     }
     $scope.authFuckery=function(){
-      $scope.$apply(function(){$scope.profile = angular.fromJson(store.get('profile'));
-      $scope.loggedIn = true;});
+      $scope.profile = angular.fromJson(store.get('profile'));
+      $scope.loggedIn = true;
+      $scope.$apply();
     }
     /////////////////// Alerts ///////////////////////
     //
