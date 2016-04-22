@@ -6,7 +6,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
 
 // routes
 // =============================================================================
-.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
+.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvider, jwtInterceptorProvider,store) {
     // top level states
     $stateProvider
       .state('home', {
@@ -152,7 +152,10 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
         });
       }
     };
-
+    $scope.authIntervention=function(){
+      auth.hookEvents();
+      $scope.updateStatus;
+    }
     /////////////////// Alerts ///////////////////////
     //
     // object to hold alerts
