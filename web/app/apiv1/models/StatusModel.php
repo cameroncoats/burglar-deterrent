@@ -10,6 +10,10 @@ public function getStatus($id){
  $results['button'] = $results['status'];
  return $results;
 }
+public function getSimpleStatus($id){
+  $results = $this->getStatus($id);
+ return $results['status'];
+}
 public function setStatus($id,$status,$method){
   $sql = "UPDATE `tblStatus` SET `status`=:status,`method`=:method WHERE `id`= :id";
   $sth = $this->_db->prepare($sql);
