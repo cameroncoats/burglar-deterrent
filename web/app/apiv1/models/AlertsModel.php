@@ -10,6 +10,11 @@ public function getAlerts($id){
  return $results;
 }
 public function addAlert($id,$title,$msg,$status){
+  foreach($this->getAlerts($id) as $alert){
+    if($alert["AlertTitle"] == $title){
+      return true;
+    }
+  }
   $sql = "INSERT INTO `tblAlerts` (`AlertTitle`,`AlertMsg`,`AlertChipID`,`AlertStatus`) VALUES (:title,:msg,:chipID,:status)";
   $sth = $this->_db->prepare($sql);
   $sth -> bindParam(":chipID",$id,PDO::PARAM_INT);
