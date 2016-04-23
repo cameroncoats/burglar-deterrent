@@ -1,3 +1,8 @@
+<div class="alert alert-{{alert.AlertStatus}}" ng-repeat="alert in alerts"><b>{{alert.AlertTitle}}:</b>{{alert.AlertMsg}}
+  <span class="text-right">
+    <a aria-label="Close" class="btn btn-danger btn-xs" ng-click='closeAlert($index)' style=" float: right!important; top: -5px;    left: 4px; position: relative;">&times;</a>
+  </span>
+</div>
 <div class="row">
   <div class="col-xs-12 col-lg-4">
     <div class="panel panel-success">

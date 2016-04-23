@@ -1,3 +1,8 @@
+<div class="alert alert-{{alert.AlertStatus}}" ng-repeat="alert in alerts"><b>{{alert.AlertTitle}}:</b>{{alert.AlertMsg}}
+  <span class="text-right">
+    <a aria-label="Close" class="btn btn-danger btn-xs" ng-click='closeAlert($index)' style=" float: right!important; top: -5px;    left: 4px; position: relative;">&times;</a>
+  </span>
+</div>
 <div class="row">
   <div class="col-xs-12 col-lg-8 col-lg-offset-2">
     <div class="btn btn-block btn-default" ng-class="{'btn-default':currentStatus.button=='away','btn-success':currentStatus.button=='home'}" ng-disabled="currentStatus.button=='home'" ng-click="isHome()"><i class="fa fa-5x fa-home"></i><h3>{{currentStatus.button=='home' ? "Looks like you're Home" : "I'm Home"}}<br><span ng-show="currentStatus.button=='home'" class="label"

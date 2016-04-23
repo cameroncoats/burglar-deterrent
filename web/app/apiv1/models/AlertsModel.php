@@ -6,7 +6,7 @@ public function getAlerts($id){
  $sth = $this->_db->prepare($sql);
  $sth -> bindParam(":id",$id,PDO::PARAM_INT);
  $sth -> execute();
- $results = $sth->fetch();
+ $results = $sth->fetchAll();
  return $results;
 }
 public function addAlert($id,$title,$msg,$status){

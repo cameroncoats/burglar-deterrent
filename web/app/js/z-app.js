@@ -105,7 +105,9 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
     $scope.updateStatus = function(){
     $http.get("apiv1/status/1").then(function(response) {
       $scope.currentStatus = angular.fromJson(response.data);
-    })
+    }).then(function(){$http.get("apiv1/alerts/1").then(function(response) {
+      $scope.alerts = angular.fromJson(response.data);
+    })})
     }
     $scope.updateStatus();
     $interval($scope.updateStatus,5000);
@@ -171,7 +173,9 @@ auth.authenticate(store.get('profile'), store.get('token'));
     $scope.alerts = [];
     // function to handle closing alerts
     $scope.closeAlert = function(index) {
-      $scope.alerts.splice(index, 1);
+      $http.delete("apiv1/alerts/"+alerts[index].AlertID).then(function(response) {
+        $scope.alerts.splice(index, 1);
+      })
     };
     //// settings
     $scope.energyInfo = {
