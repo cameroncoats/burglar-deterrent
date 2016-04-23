@@ -90,6 +90,8 @@ public function getMostRecentPowerUser($userID){
  * @return (float)         The most recent power usage of the chip
  */
 public function getMostRecentPower($chipID){
+  $status = new StatusModel();
+  if($status->getStatus($chipID)=="home"){ return 0;}
   $sql = "SELECT `tsData` FROM `tblTSDB` WHERE `tsChipID` = :cid ORDER BY `tsTime` DESC LIMIT 0,1";
   $sth = $this->_db->prepare($sql);
   $sth->bindParam(':cid',$chipID,PDO::PARAM_INT);
