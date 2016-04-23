@@ -116,10 +116,9 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
     $scope.updateStatus();
     $interval($scope.updateStatus,5000);
     $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    $scope.series = ['Energy Use', 'Energy Cost'];
+    $scope.series = ['Energy Use'];
     $scope.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
+      [65, 59, 80, 81, 56, 55, 40]
     ];
     $scope.isHome = function() {
       if ($scope.currentStatus.button != 'home') {
