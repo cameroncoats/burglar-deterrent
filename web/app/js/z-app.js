@@ -98,7 +98,7 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
           return v + ' mW';
         },
         'draw': function() {
-        $(this.i).css('transform', 'rotate(180deg)').css('font-size', '25px');}
+        $(this.i).css('font-size', '25px');}
       }
     };
     $scope.getEnergyNow = function(){
