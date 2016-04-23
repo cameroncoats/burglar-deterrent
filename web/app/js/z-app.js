@@ -91,8 +91,8 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
         fgColor: '#66CC66',
         angleOffset: -125,
         angleArc: 250,
-        data-max: 500,
-        data-min:0,
+        max: 500,
+        min:0,
         readOnly: true,
         format: function(v) {
           return v + ' mW';
