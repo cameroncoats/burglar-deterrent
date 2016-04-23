@@ -93,13 +93,13 @@ var app = angular.module('eversafe', ['ui.router', 'ui.bootstrap', 'ui.mask',
         angleArc: 250,
         readOnly: true,
         format: function(v) {
-          return v + ' W';
+          return v + ' mW';
         }
       }
     };
     $scope.getEnergyNow = function(){
       $http.get("apiv1/TSDB/currentUser/1").then(function(response) {
-        $scope.energyNow.value = response.data;})
+        $scope.energyNow.value = (number(response.data)/3);})
     }
     $scope.currentStatus={};
     $scope.updateStatus = function(){
