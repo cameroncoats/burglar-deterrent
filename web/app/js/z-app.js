@@ -173,7 +173,7 @@ auth.authenticate(store.get('profile'), store.get('token'));
     $scope.alerts = [];
     // function to handle closing alerts
     $scope.closeAlert = function(index) {
-      $http.delete("apiv1/alerts/"+alerts[index].AlertID).then(function(response) {
+      $http.delete("apiv1/alerts/"+$scope.alerts[index].AlertID).then(function(response) {
         $scope.alerts.splice(index, 1);
       })
     };
