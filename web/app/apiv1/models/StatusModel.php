@@ -12,7 +12,7 @@ public function getStatus($id){
 }
 public function getSimpleStatus($id){
   $results = $this->getStatus($id);
- return $results['status'];
+ return array("status"=>$results['status']);
 }
 public function setStatus($id,$status,$method){
   $sql = "UPDATE `tblStatus` SET `status`=:status,`method`=:method WHERE `id`= :id";
