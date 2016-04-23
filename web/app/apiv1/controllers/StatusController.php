@@ -10,7 +10,7 @@ class StatusController extends BaseController
   }
   else {
     if(isset($request->url_elements[3])&& isset($request->url_elements[2])){
-    $tsdb->addData($request->url_elements[2],$request->url_elements[3]);
+    $tsdb->addData($request->url_elements[2],$request->url_elements[3],$model->getStatus($request->url_elements[2])["status"],$request->url_elements[4]);
   return $model->getSimpleStatus($request->url_elements[2]);}
     else{
   return $model->getStatus($request->url_elements[2]);

@@ -7,12 +7,22 @@ class TSDModel extends BaseModel
    * @param (varchar) $value  The data value to write to the DB
    * @return (bool) true on successful insert
    */
-public function addData($chipid,$value){
+public function addData($chipid,$value,$newStatus,$currentStatus){
+  ($currentStatus>0)?$currentStatus = "away":$currentStatus = "home";
+  if($currentStatus == "away"){
  $sql = "INSERT INTO `tblTSDB` (`tsTime`,`tsData`,`tsChipID`) VALUES (CURRENT_TIMESTAMP,:data,:chip)";
  $sth = $this->_db->prepare($sql);
  $sth -> bindParam(":data",$value,PDO::PARAM_STR);
  $sth -> bindParam(":chip",$chipid,PDO::PARAM_INT);
+ if($value < 30){
+   $alert = new AlertsModel();
+   $alert->addAlert($chipid,"Low Power Draw","Your Eversafe plug was activated but no power is being drawn. Please check the connected appliance is working properly.","danger");
+ }
  return $sth -> execute();
+ }
+ else{
+   return true;
+ }
 }
 /**
  * Function gets the energy usage of the last week, split into 12 hour blocks
