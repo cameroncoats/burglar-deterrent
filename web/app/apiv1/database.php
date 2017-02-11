@@ -3,7 +3,7 @@
 $database=array();
 $database['name']='eversafe'; // Database Name
 $database['username']='eversafe'; // Username - leave blank if MSSQL & windows auth
-$database['password']='safeever'; // Password - leave blank if MSSQL & windows auth
+$database['password']='******'; // Password - leave blank if MSSQL & windows auth
 $database['host']='localhost'; // database Host
 $database['driver']='mysql'; // database Driver - mysql, sqlsrv etc
 // PDO connection string - this is correct for mysql but might need tweaked for
